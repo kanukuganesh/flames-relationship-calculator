@@ -1,26 +1,262 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ===== Tailwind v4  Theme ===== */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary: #f4258c;
+  --color-secondary: #7c3aed;
+  --color-background-light: #fcf8fa;
+  --color-background-dark: #221019;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+
+  --radius-default: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-heartbeat: heartbeat 1.6s ease-in-out infinite;
+  --animate-spin-slow: spin 12s linear infinite;
+  --animate-bounce-subtle: bounce-subtle 2s infinite;
+  --animate-shimmer: shimmer 3s linear infinite;
+  --animate-glow-pulse: glow-pulse 2.5s ease-in-out infinite;
+  --animate-count-tick: count-tick 0.35s ease-out;
+  --animate-pulse-ring: pulse-ring 1.2s ease-out infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(var(--r, 12deg));
+    }
+
+    50% {
+      transform: translateY(-18px) rotate(calc(var(--r, 12deg) + 8deg));
+    }
+  }
+
+  @keyframes heartbeat {
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    14% {
+      transform: scale(1.15);
+    }
+
+    28% {
+      transform: scale(1);
+    }
+
+    42% {
+      transform: scale(1.1);
+    }
+
+    56% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes bounce-subtle {
+
+    0%,
+    100% {
+      transform: translateY(-5%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes glow-pulse {
+
+    0%,
+    100% {
+      box-shadow: 0 0 30px rgba(244, 37, 140, 0.15);
+    }
+
+    50% {
+      box-shadow: 0 0 60px rgba(244, 37, 140, 0.35);
+    }
+  }
+
+  @keyframes count-tick {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.3);
+      color: #f4258c;
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgba(244, 37, 140, 0.5);
+    }
+
+    70% {
+      box-shadow: 0 0 0 10px rgba(244, 37, 140, 0);
+    }
+
+    100% {
+      box-shadow: 0 0 0 0 rgba(244, 37, 140, 0);
+    }
   }
 }
 
+/* ===== Base ===== */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(244, 37, 140, 0.2);
+  color: inherit;
+}
+
+/* ===== FLAMES Wheel Letter States ===== */
+.flame-letter {
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.flame-letter.highlight {
+  transform: translate(-50%, -50%) scale(1.18) !important;
+  filter: drop-shadow(0 0 24px rgba(244, 37, 140, 0.4));
+}
+
+.flame-letter.eliminated {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.3) rotate(45deg) !important;
+  pointer-events: none;
+}
+
+.flame-letter.winner {
+  transform: translate(-50%, -50%) scale(1.4) !important;
+  filter: drop-shadow(0 0 40px rgba(244, 37, 140, 0.5));
+}
+
+.flame-letter.winner>div:first-child {
+  background: linear-gradient(135deg, #f4258c, #ff6eb4) !important;
+  color: #fff !important;
+  border-color: #f4258c !important;
+}
+
+/* ===== Confetti ===== */
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti-piece {
+  position: fixed;
+  top: -20px;
+  animation: confettiFall var(--d, 3s) ease-in forwards;
+  animation-delay: var(--delay, 0s);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* ===== Dot blink (loading text) ===== */
+@keyframes dotBlink {
+
+  0%,
+  20% {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.dot-anim span:nth-child(1) {
+  animation: dotBlink 1.4s 0s infinite;
+}
+
+.dot-anim span:nth-child(2) {
+  animation: dotBlink 1.4s 0.2s infinite;
+}
+
+.dot-anim span:nth-child(3) {
+  animation: dotBlink 1.4s 0.4s infinite;
+}
+
+/* ===== Input focus glow ===== */
+.input-glow:focus {
+  box-shadow: 0 0 0 4px rgba(244, 37, 140, 0.08), 0 4px 24px rgba(244, 37, 140, 0.06);
+}
+
+/* ===== Button shimmer gradient ===== */
+.btn-shimmer {
+  background: linear-gradient(90deg, #f4258c 0%, #ff6eb4 40%, #f4258c 60%, #f4258c 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ===== Mic listening ===== */
+.mic-listening {
+  animation: pulse-ring 1.2s ease-out infinite;
+  background-color: #f4258c !important;
+  color: #fff !important;
+}
+
+/* ===== Result glow ===== */
+.result-glow {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+/* ===== Screen transitions (for client-side view switching) ===== */
+.screen-enter {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+}
+
+.screen-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ===== Celebration gradient ===== */
+.celebration-gradient {
+  background: radial-gradient(circle at center, rgba(244, 37, 140, 0.15) 0%, transparent 70%);
+}
+
+/* ===== Text glow ===== */
+.text-glow {
+  text-shadow: 0 0 20px rgba(244, 37, 140, 0.4);
 }
