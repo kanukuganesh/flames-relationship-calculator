@@ -119,18 +119,15 @@ function ResultContent() {
                             favorite
                         </span>
                         <p className="text-slate-500 text-sm font-medium">
-                            © 2024 FLAMES Cosmic Calculator. Handcrafted with love.
+                            &copy; {new Date().getFullYear()} FLAMES Calculator Online. Free Love Compatibility Test.
                         </p>
                     </div>
                     <div className="flex gap-8">
-                        <a className="text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">
-                            Privacy
+                        <a className="text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="https://flames143.vercel.app/">
+                            Home
                         </a>
-                        <a className="text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">
-                            Terms
-                        </a>
-                        <a className="text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="#">
-                            Support
+                        <a className="text-slate-500 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors" href="https://flames143.vercel.app/#about">
+                            About
                         </a>
                     </div>
                 </div>

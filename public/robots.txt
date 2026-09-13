@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://flames143.vercel.app/sitemap.xml

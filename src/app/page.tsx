@@ -62,12 +62,13 @@ export default function HomePage() {
 
           {/* Title */}
           <h1 className="text-5xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] mb-6">
-            Relationship <span className="text-primary italic">Calculator</span>
+            FLAMES <span className="text-primary italic">Calculator</span> Online
           </h1>
 
           <p className="text-lg text-slate-600 max-w-md mx-auto mb-12">
-            Discover your compatibility with heart and stars! Enter your names
-            below to reveal the magic.
+            Free love compatibility test by name. Enter two names and let the
+            classic FLAMES game reveal your relationship — Friends, Love,
+            Affection, Marriage, Enemies, or Siblings!
           </p>
 
           {/* Input Form */}
@@ -170,6 +171,54 @@ export default function HomePage() {
           <FlamesLegend />
         </div>
       </main>
+
+      {/* SEO Content Section */}
+      <section className="relative z-10 max-w-4xl mx-auto px-6 py-16">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 text-center mb-12">
+          What is the <span className="text-primary">FLAMES</span> Calculator?
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-10 text-left">
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-slate-800">How to Play FLAMES Online</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Enter your name and your crush&apos;s name in the fields above, then
+              click <strong>&quot;Calculate Relationship&quot;</strong>. The FLAMES
+              calculator removes common letters, counts the remaining ones, and
+              uses that count to eliminate letters from <strong>F-L-A-M-E-S</strong> until
+              one survives — revealing your relationship type!
+            </p>
+            <h3 className="text-xl font-bold text-slate-800">What Does FLAMES Stand For?</h3>
+            <ul className="text-slate-600 space-y-1">
+              <li><strong>F</strong> — Friends: A strong platonic bond</li>
+              <li><strong>L</strong> — Love: A romantic connection</li>
+              <li><strong>A</strong> — Affection: Warm feelings and care</li>
+              <li><strong>M</strong> — Marriage: Long-term commitment</li>
+              <li><strong>E</strong> — Enemies: A fiery rivalry</li>
+              <li><strong>S</strong> — Siblings: A family-like bond</li>
+            </ul>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-slate-800">Why Use Our FLAMES Calculator?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Our <strong>free FLAMES calculator online</strong> is fast, accurate,
+              and works on any device. No sign-ups required — just enter two names
+              and get instant results with a beautiful animated reveal. It&apos;s the
+              classic <strong>love compatibility test</strong> that millions have
+              played since the 1990s, now available as a modern web app.
+            </p>
+            <h3 className="text-xl font-bold text-slate-800">Is FLAMES Accurate?</h3>
+            <p className="text-slate-600 leading-relaxed">
+              FLAMES is a <strong>traditional name game</strong> designed for fun
+              and entertainment. While it can&apos;t scientifically predict real
+              relationships, it&apos;s a nostalgic and playful way to explore your
+              connection with someone special. Real relationships are built on
+              trust, communication, and shared experiences.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Side Card */}
       <div className="hidden lg:block fixed bottom-12 right-12 w-48 h-64 bg-white rounded-3xl shadow-2xl p-4 rotate-6 border border-primary/10">
